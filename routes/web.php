@@ -19,9 +19,11 @@ Route::get('/', function () {
 
 Route::get('/tim', 'TimController@index');
 
-Route::get('/admin', 'AdminController@index');
+Route::get('/admin', 'AdminController@index')->middleware('auth');
 Route::get('/admin/dataadmin', 'AdminController@dataadmin');
 
-Route::get('/login', 'LoginController@index');
+Route::get('/login', 'LoginController@index')->name('login');
+Route::post('/postlogin', 'LoginController@postlogin')->name('postlogin');
+Route::get('/logout', 'LoginController@logout');
 
 

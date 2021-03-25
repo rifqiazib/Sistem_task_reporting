@@ -35,7 +35,7 @@
 
     <ul class="nav navbar-nav navbar-right">
 			<li>
-      <a href="#" class="navbar-brand">AKUN</a>
+      <a href="/logout" class="navbar-brand">LOG OUT</a>
       </li>
 			</ul>
    
