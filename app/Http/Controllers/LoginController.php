@@ -14,23 +14,15 @@ class LoginController extends Controller
 
     public function postlogin(Request $request)
     {
-        
-        if($request->user()->hasrole('Tim'))
-        {
-            return redirect('tim');
+        if (Auth::attempt($request->only('email', 'password'))) {
+            if(Auth::user()->hasrole('Admin')) {
+                return 'Admin';
+            } elseif(Auth::user()->hasrole('Tim')) {
+                return 'Tim';
+            } else {
+                return 'Error';
+            }
         }
-
-        if($request->user()->hasrole('Admin'))
-        {
-            return redirect('admin');
-        }
-        
-        //dd($request->all());
-       // if (Auth::attempt($request->only('email', 'password')))
-        //{
-          //  return redirect('/admin');
-        //}
-        //return redirect('/login');
     }
 
     public function logout()
