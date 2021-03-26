@@ -8,6 +8,14 @@ class TimController extends Controller
 {
     public function index()
     {
-        return view('tim.index');
+        if(request()->user()->hasrole('Tim'))
+        {
+            return view('tim.index');
+        }
+        else
+        {
+            return redirect('/login');
+        }
+        
     }
 }
