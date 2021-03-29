@@ -9,17 +9,22 @@ class LoginController extends Controller
 {
     public function index()
     {
+        return "test";
         return view('login.index');
     }
 
     public function postlogin(Request $request)
     {
-        if (Auth::attempt($request->only('email', 'password'))) {
-            if(Auth::user()->hasrole('Admin')) {
-                return 'Admin';
-            } elseif(Auth::user()->hasrole('Tim')) {
-                return 'Tim';
-            } else {
+        if (Auth::attempt($request->only('email', 'password'))) 
+        {
+            if(Auth::user()->hasrole('Admin')) 
+            {
+                return redirect('admin');
+            } elseif(Auth::user()->hasrole('Tim')) 
+            {
+                return redirect('tim');
+            } else 
+            {
                 return 'Error';
             }
         }
