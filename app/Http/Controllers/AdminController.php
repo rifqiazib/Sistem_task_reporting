@@ -23,5 +23,11 @@ class AdminController extends Controller
     {
         return view('admin.dataadmin');
     }
+
+    public function taskreport()
+    {
+        $data_task = \App\Models\ReportTask::all();
+        return view('admin.taskreport', ['report_task' => $data_task] );
+    }
 }
 
