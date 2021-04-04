@@ -52,15 +52,15 @@
               <!-- /.card-header -->
               <!-- form start -->
               <form action="\tim\create" method="POST">
-              {{csrf_field()}}
+                @csrf
                 <div class="card-body">
                   <div class="form-group">
                     <label for="inputtaskdesc">Task Description</label>
-                    <textarea name="task_desc"  id="inputtaskdesc" class ="form-control" rows="4"></textarea>
+                    <textarea name="task_desc" id="inputtaskdesc" class ="form-control" rows="4"></textarea>
                   </div>
                   <div class="form-group">
                     <label for="createdate">Created date</label>
-                    <input name="created_date" class="form-control" id="createdate" placeholder="">
+                    <input type="date" name="created_date" class="form-control" id="createdate" placeholder="">
                   </div>
                 
                 </div>

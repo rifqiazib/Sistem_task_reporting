@@ -100,7 +100,6 @@ The above copyright notice and this permission notice shall be included in all c
               <div class="card">
                 <div class="card-header card-header-primary">
                   <h4 class="card-title">TASK REPORT</h4>
-                  
                 </div>
                 <div class="card-body table-responsive">
                   <table class="table table-hover">
@@ -110,16 +109,15 @@ The above copyright notice and this permission notice shall be included in all c
                       <th>Created Date</th>
                       <th>Created By</th>
                     </thead>
-
                     <tbody>
                     @foreach($report_task as $report)
-                  <tr>
-                    <td>{{$report -> id}}</td>
-                    <td>{{$report -> task_desc}}</td>
-                    <td>{{$report -> created_date}} </td>
-                    <td>{{$report -> created_by}}</td>
-                  </tr>
-                  @endforeach
+                    <tr>
+                      <td>{{ $report->id }}</td>
+                      <td>{{ $report->task_desc }}</td>
+                      <td>{{ $report->created_date }} </td>
+                      <td>{{ $report->hasCreator->name }}</td>
+                    </tr>
+                    @endforeach
                     </tbody>
                   </table>
                 </div>

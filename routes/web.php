@@ -32,6 +32,6 @@ Route::get('/admin/datauser', 'AdminController@datauser');
 
 Route::get('/login', 'LoginController@index')->name('login');
 Route::post('/postlogin', 'LoginController@postlogin')->name('postlogin');
-Route::get('/logout', 'LoginController@logout');
+Route::get('/logout', 'LoginController@logout')->name('logout');
 
 

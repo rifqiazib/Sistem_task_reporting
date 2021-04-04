@@ -17,7 +17,8 @@ class CreateReportTaskTable extends Migration
             $table->id();
             $table->string('task_desc');
             $table->date('created_date');
-            $table->string('created_by');
+            $table->unsignedBigInteger('created_by');
+            $table->foreign('created_by')->references('id')->on('users')->onDelete('CASCADE');
             $table->timestamps();
         });
     }

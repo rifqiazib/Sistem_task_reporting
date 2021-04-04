@@ -13,6 +13,7 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
+        // create user as admin
         $saveUser = User::create([
             'name' => 'Jhon Doe',
             'email' => 'jhon@mail.com',
@@ -22,6 +23,18 @@ class UserSeeder extends Seeder
         UserRole::create([
             'user_id' => $saveUser->id,
             'role_id' => 1
+        ]);
+
+        // create user as team
+        $saveTeam = User::create([
+            'name' => 'Team',
+            'email' => 'team@mail.com',
+            'password' => bcrypt('secret')
+        ]);
+
+        UserRole::create([
+            'user_id' => $saveTeam->id,
+            'role_id' => 2
         ]);
     }
 }

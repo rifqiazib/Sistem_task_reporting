@@ -24,7 +24,7 @@
           <div class="dropdown-divider"></div>
           <div class="dropdown-divider"></div>
           <div class="dropdown-divider"></div>
-          <a href="logout" class="dropdown-item">
+          <a href="{{ route('logout') }}" class="dropdown-item">
             <i class="fas fa-sign-out-alt"></i> LOGOUT
           </a>
            </li>

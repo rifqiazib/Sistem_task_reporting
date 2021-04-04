@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use Auth;
 use Illuminate\Http\Request;
+use App\Models\ReportTask;
 
 class TimController extends Controller
 {
@@ -21,7 +23,7 @@ class TimController extends Controller
 
     public function view()
     {
-        $data_task = \App\Models\ReportTask::all();
+        $data_task = ReportTask::all();
         return view('tim.view', ['report_task' => $data_task]);
     }
 
@@ -32,27 +34,32 @@ class TimController extends Controller
 
     public function create(Request $request)
     {
-        \App\Models\ReportTask::create($request->all());
+        $dataTask = [
+            "task_desc" => $request->task_desc,
+            "created_date" => $request->created_date,
+            "created_by" => Auth::user()->id,
+        ];
+        ReportTask::create($dataTask);
         return redirect('/tim/view')->with('Sukses', 'Data Berhasil Diinputkan');
 
     }
 
     public function edit($id)
     {
-        $report = \App\Models\ReportTask::find($id);
+        $report = ReportTask::find($id);
         return view('tim/edit',['report_task' => $report]);
     }
 
     public function update(Request $request, $id)
     {
-        $report = \App\Models\ReportTask::find($id);
+        $report = ReportTask::find($id);
         $report -> update($request->all());
         return redirect('/tim/view');
     }
 
     public function delete($id)
     {
-        $report = \App\Models\ReportTask::find($id);
+        $report = ReportTask::find($id);
         $report -> delete();
         return redirect('tim/view');
     }
