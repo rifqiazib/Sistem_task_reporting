@@ -51,7 +51,7 @@
               </div>
               <!-- /.card-header -->
               <!-- form start -->
-              <form action="\tim\create" method="POST">
+              <form action="{{ route('tim_create') }}" method="POST">
                 @csrf
                 <div class="card-body">
                   <div class="form-group">

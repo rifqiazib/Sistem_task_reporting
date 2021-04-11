@@ -94,38 +94,43 @@ The above copyright notice and this permission notice shall be included in all c
       <!-- End Navbar -->
 
       <div class="content">
-        <div class="container-fluid">
-          
-            <div class="col-lg-12 col-md-12">
-              <div class="card">
-                <div class="card-header card-header-primary">
-                  <h4 class="card-title">TASK REPORT</h4>
-                </div>
-                <div class="card-body table-responsive">
-                  <table class="table table-hover">
-                    <thead class="text-warning">
-                      <th>ID</th>
-                      <th>Task Description</th>
-                      <th>Created Date</th>
-                      <th>Created By</th>
-                    </thead>
-                    <tbody>
-                    
-                    @foreach($report_task as $report)
-                    <tr>
-                      <td>{{ $report->id }}</td>
-                      <td>{{ $report->task_desc }}</td>
-                      <td>{{ $report->created_date }} </td>
-                      <td>{{ $report->hasCreator->name }}</td>
-                    </tr>
-                    @endforeach
-                    </tbody>
-                  </table>
-                </div>
+      <div class="card card-primary">
+              <div class="card-header">
+                <h3 class="card-title">Register a new user</h3>
               </div>
+              <!-- /.card-header -->
+              <!-- form start -->
+              <form action="\admin\{{$user->id}}\update" method="post">
+                @csrf
+                <div class="card-body">
+                  <div class="form-group">
+                    <label for="inputname"></label>
+                    <input name="name" id="inputname" value="{{$user->name}}" class ="form-control" placeholder="Name" rows="4"></input>
+                  </div>
+                  <div class="form-group">
+                    <label for="email"></label>
+                    <input type="email" name="email" value="{{$user->email}}" class="form-control"  placeholder="Email">
+                  </div>
+                  <div class="form-group">
+                    <label for="password"></label>
+                    <input type="password" name="password" value="{{$user->password}}" class="form-control"  placeholder="Password">
+                  </div>
+                  <div class="form-group">
+                    <label for="role">Pilih Role</label>
+                    <select class="form-control" id="role">
+                    <option value="admin">Admin</option>
+                    <option value="tim">Team</option>
+                    </select>
+                  </div>
+                
+                </div>
+                <!-- /.card-body -->
+
+                <div class="card-footer">
+                  <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+              </form>
             </div>
-          </div>
-        </div>
       </div>
 
       @include('admin/footer')

@@ -99,32 +99,39 @@ The above copyright notice and this permission notice shall be included in all c
             <div class="col-lg-12 col-md-12">
               <div class="card">
                 <div class="card-header card-header-primary">
-                  <h4 class="card-title">TASK REPORT</h4>
+                  <h4 class="card-title">Data User</h4>
                 </div>
                 <div class="card-body table-responsive">
                   <table class="table table-hover">
                     <thead class="text-warning">
                       <th>ID</th>
-                      <th>Task Description</th>
-                      <th>Created Date</th>
-                      <th>Created By</th>
+                      <th>Name</th>
+                      <th>Email</th>
+                      <th>Role</th>
                     </thead>
                     <tbody>
-                    
-                    @foreach($report_task as $report)
+
+                   @foreach($user as $data_user)
                     <tr>
-                      <td>{{ $report->id }}</td>
-                      <td>{{ $report->task_desc }}</td>
-                      <td>{{ $report->created_date }} </td>
-                      <td>{{ $report->hasCreator->name }}</td>
+                      <td>{{ $data_user->id }}</td>
+                      <td>{{ $data_user->name }}</td>
+                      <td>{{ $data_user->email }}</td>
+                      <td></td>
+                      <td>
+                      <a href="/admin/{{$data_user->id}}/edit"><button class="btn btn-warning btn-sm">EDIT</button></a>
+                      <a href="/admin/{{$data_user->id}}/delete"><button class="btn btn-danger btn-sm">DELETE</button></a>
+                      </td>
                     </tr>
-                    @endforeach
+                  @endforeach
                     </tbody>
                   </table>
                 </div>
               </div>
             </div>
           </div>
+          <div>
+                  <a href="form_user"><button type="submit" class="btn btn-primary">TAMBAH</button></a>
+                </div>
         </div>
       </div>
 
