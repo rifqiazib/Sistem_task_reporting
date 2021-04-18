@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use App\Models\Role;
+use App\Models\UserRole;
+use App\Models\ReportTask;
 
 class AdminController extends Controller
 {
@@ -21,22 +24,30 @@ class AdminController extends Controller
     }
 
     public function datauser() {
-        $data_user = \App\User::all();
-        return view('admin.datauser', ['user' => $data_user]);
+        $data_user = User::all();
+        return view('admin.datauser', ['users' => $data_user]);
     }
 
     public function formuser(){
-        return view('admin.form_user');
+        $data_role = Role::all();
+        return view('admin.form_user', ['roles' => $data_role]);
     }
 
     public function create(Request $request) {
         $data_user = [
             "name" => $request->name,
             "email" => $request->email,
-            "password" => encrypt($request->password)
+            "password" => bcrypt($request->password)
             
         ];
-        User::create($data_user);
+        $save_user = User::create($data_user);
+
+        $data_role = [
+            "user_id" => $save_user->id,
+            "role_id" => $request->role
+        ];
+        UserRole::create($data_role);
+
         return redirect('/admin/datauser');
     }
 
@@ -60,8 +71,21 @@ class AdminController extends Controller
 
     public function taskreport()
     {
-        $data_task = \App\Models\ReportTask::all();
+        $data_task = ReportTask::all();
         return view('admin.taskreport', ['report_task' => $data_task] );
+    }
+
+    public function search(Request $request)
+    {
+        $form_date = $request->input('created_date');
+        $to_date = $request->input('created_to');
+
+        $data_task = ReportTask::select()
+        ->where('created_date', '>=', $form_date)
+        ->where('created_date', '<=', $to_date)
+        ->get();
+        return view('admin.taskreport', ['report_task' => $data_task]);
+        
     }
 
    

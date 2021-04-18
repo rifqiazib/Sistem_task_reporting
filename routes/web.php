@@ -25,9 +25,11 @@ Route::get('tim/{id}/edit', 'TimController@edit')->name('tim_edit');
 Route::post('tim/{id}/update', 'TimController@update')->name('tim_update');
 Route::get('tim/{id}/delete', 'TimController@delete')->name('tim_delete');
 
+
 Route::get('/admin', 'AdminController@index')->middleware('auth');
 Route::get('/admin/dataadmin', 'AdminController@dataadmin')->name('dataadmin');
 Route::get('/admin/taskreport', 'AdminController@taskreport')->name('taskreport');
+Route::post('admin/taskreport', 'AdminController@search')->name('search');
 Route::get('/admin/datauser', 'AdminController@datauser')->name('datauser');
 Route::get('/admin/form_user', 'AdminController@formuser')->name('formuser');
 Route::post('/admin/create', 'AdminController@create')->name('admin_create');

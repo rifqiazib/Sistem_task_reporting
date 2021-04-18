@@ -32,6 +32,11 @@ class TimController extends Controller
         return view('tim.form');
     }
 
+    public function message()
+    {
+        return view('tim.message');
+    }
+
     public function create(Request $request)
     {
         $dataTask = [
@@ -40,7 +45,8 @@ class TimController extends Controller
             "created_by" => Auth::user()->id,
         ];
         ReportTask::create($dataTask);
-        return redirect('/tim/view')->with('Sukses', 'Data Berhasil Diinputkan');
+        $request->session()->flash('sukses', 'Data Added Succsessfully');
+        return redirect('/tim/view');
 
     }
 
@@ -63,5 +69,6 @@ class TimController extends Controller
         $report -> delete();
         return redirect('tim/view');
     }
+
 
 }

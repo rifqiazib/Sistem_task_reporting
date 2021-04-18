@@ -101,6 +101,30 @@ The above copyright notice and this permission notice shall be included in all c
                 <div class="card-header card-header-primary">
                   <h4 class="card-title">TASK REPORT</h4>
                 </div>
+                <form action="{{route('search')}}" method="post">
+              @csrf
+              <br>
+              <div class="container">
+                <div class="row">
+                  <div class="container-fluid">
+                    <div class="form-group row">
+                      <label for="date" class="col-form-label ">Created date from</label>
+                        <div class="col-3">
+                          <input type="date" class="form-control input-sm" id="from" name="created_date" required/>
+                        </div>
+                          <label for="date" class="col-form-label">To</label>
+                            <div class="col-3">
+                              <input type="date" class="form-control input-sm" id="t0" name="created_to" required/>
+                        </div>
+                          <div class="col-sm-2">
+                          <button type="submit" class="btn btn-white btn-round btn-just-icon"><i class="material-icons"></i></button>
+                          </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              </br>
+              </form>
                 <div class="card-body table-responsive">
                   <table class="table table-hover">
                     <thead class="text-warning">
@@ -115,7 +139,7 @@ The above copyright notice and this permission notice shall be included in all c
                     <tr>
                       <td>{{ $report->id }}</td>
                       <td>{{ $report->task_desc }}</td>
-                      <td>{{ $report->created_date }} </td>
+                      <td>{{ $report->created_date->format('l, d F Y') }} </td>
                       <td>{{ $report->hasCreator->name }}</td>
                     </tr>
                     @endforeach

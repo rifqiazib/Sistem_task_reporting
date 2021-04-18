@@ -111,15 +111,15 @@ The above copyright notice and this permission notice shall be included in all c
                     </thead>
                     <tbody>
 
-                   @foreach($user as $data_user)
+                   @foreach($users as $user)
                     <tr>
-                      <td>{{ $data_user->id }}</td>
-                      <td>{{ $data_user->name }}</td>
-                      <td>{{ $data_user->email }}</td>
-                      <td></td>
+                      <td>{{ $user->id }}</td>
+                      <td>{{ $user->name }}</td>
+                      <td>{{ $user->email }}</td>
+                      <td>{{ $user->roles[0]->name }}</td>
                       <td>
-                      <a href="/admin/{{$data_user->id}}/edit"><button class="btn btn-warning btn-sm">EDIT</button></a>
-                      <a href="/admin/{{$data_user->id}}/delete"><button class="btn btn-danger btn-sm">DELETE</button></a>
+                      <a href="/admin/{{$user->id}}/edit"><button class="btn btn-warning btn-sm">EDIT</button></a>
+                      <a href="/admin/{{$user->id}}/delete"><button class="btn btn-danger btn-sm">DELETE</button></a>
                       </td>
                     </tr>
                   @endforeach
@@ -129,8 +129,8 @@ The above copyright notice and this permission notice shall be included in all c
               </div>
             </div>
           </div>
-          <div>
-                  <a href="form_user"><button type="submit" class="btn btn-primary">TAMBAH</button></a>
+          <div class="col-5"> 
+                  <a href="form_user"><button type="submit" class="btn btn-primary">Add New</button></a>
                 </div>
         </div>
       </div>

@@ -117,10 +117,12 @@ The above copyright notice and this permission notice shall be included in all c
                   </div>
                   <div class="form-group">
                     <label for="role">Pilih Role</label>
-                    <select class="form-control" id="role">
-                    <option value="admin">Admin</option>
-                    <option value="tim">Team</option>
+                    <select class="form-control" id="role" name="role">
+                    @foreach ($roles as $role)
+                    <option value="{{ $role -> id }}">{{ $role -> name}}</option>
+                    @endforeach
                     </select>
+                    
                   </div>
                 
                 </div>

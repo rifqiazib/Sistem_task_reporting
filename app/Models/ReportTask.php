@@ -10,6 +10,7 @@ class ReportTask extends Model
 {
     protected $table = "report_task";
     protected $fillable = ['task_desc', 'created_date', 'created_by'];
+    protected $dates = ['created_date'];
 
     public function hasCreator(){
 
