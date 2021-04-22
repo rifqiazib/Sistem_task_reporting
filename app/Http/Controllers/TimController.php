@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Auth;
 use Illuminate\Http\Request;
 use App\Models\ReportTask;
+use App\User;
 
 class TimController extends Controller
 {
@@ -12,7 +13,9 @@ class TimController extends Controller
     {
         if(request()->user()->hasrole('Tim'))
         {
-            return view('tim.index');
+            $data_user = User::where('id', Auth::user()->id)->get();
+            
+            return view('tim.index', ['data_user' => $data_user]);
         }
         else
         {
@@ -23,7 +26,7 @@ class TimController extends Controller
 
     public function view()
     {
-        $data_task = ReportTask::all();
+        $data_task = ReportTask::where('created_by', Auth::user()->id)->get();
         return view('tim.view', ['report_task' => $data_task]);
     }
 

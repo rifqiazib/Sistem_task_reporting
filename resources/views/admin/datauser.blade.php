@@ -95,7 +95,17 @@ The above copyright notice and this permission notice shall be included in all c
 
       <div class="content">
         <div class="container-fluid">
-          
+        @if(session('sukses'))
+          <div class="alert alert-info" role="alert">
+          {{session('sukses')}}
+          </div>
+          @endif
+
+          @if(session('editsukses'))
+          <div class="alert alert-info" role="alert">
+          {{session('editsukses')}}
+          </div>
+          @endif
             <div class="col-lg-12 col-md-12">
               <div class="card">
                 <div class="card-header card-header-primary">
@@ -114,7 +124,7 @@ The above copyright notice and this permission notice shall be included in all c
                    @foreach($users as $user)
                     <tr>
                       <td>{{ $user->id }}</td>
-                      <td>{{ $user->name }}</td>
+                      <td><a href="{{ route('admin_view', $user->id) }}">{{ $user->name }}</a></td>
                       <td>{{ $user->email }}</td>
                       <td>{{ $user->roles[0]->name }}</td>
                       <td>

@@ -18,6 +18,17 @@
 <body class="hold-transition login-page">
 <div class="login-box">
   <!-- /.login-logo -->
+          @if(session('noaccount'))
+          <div class="alert alert-danger" role="alert">
+          {{session('noaccount')}}
+          </div>
+          @endif
+
+          @if(session('norole'))
+          <div class="alert alert-danger" role="alert">
+          {{session('norole')}}
+          </div>
+          @endif
   <div class="card card-outline card-primary">
     <div class="card-header text-center">
       <a href="/login" class="h1"><b>ESTEH CREATIVE</b></a>

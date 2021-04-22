@@ -36,6 +36,7 @@ Route::post('/admin/create', 'AdminController@create')->name('admin_create');
 Route::get('/admin/{id}/edit', 'AdminController@edit')->name('admin_edit');
 Route::post('/admin/{id}/update', 'AdminController@update')->name('admin_update');
 Route::get('/admin/{id}/delete','AdminController@delete')->name('admin_delete');
+Route::get('/admin/{id}/view', 'AdminController@view')->name('admin_view');
 
 Route::get('/login', 'LoginController@index')->name('login');
 Route::post('/postlogin', 'LoginController@postlogin')->name('postlogin');

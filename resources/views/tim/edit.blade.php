@@ -57,7 +57,7 @@
                 <div class="card-body">
                   <div class="form-group">
                     <label for="inputtaskdesc">Task Description</label>
-                    <textarea name="task_desc"  id="inputtaskdesc" class ="form-control" rows="4" value="{{$report_task->task_desc}}"></textarea>
+                    <textarea name="task_desc"  id="inputtaskdesc" class ="form-control" rows="4" >{{$report_task->task_desc}}</textarea>
                   </div>
                   <div class="form-group">
                     <label for="createdate">Created date</label>

@@ -12,8 +12,11 @@
         <div class="image">
           <img src="{{asset('picture/user1.jpg')}}" class="img-circle elevation-2" alt="User Image">
         </div>
+        
         <div class="info">
-          <a href="#" class="d-block">Alexander Pierce</a>
+          @foreach($data_user as $user)
+          <a href="#" class="d-block">{{ $user->name }}</a>
+          @endforeach
         </div>
       </div>
 

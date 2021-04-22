@@ -7,6 +7,7 @@ use App\User;
 use App\Models\Role;
 use App\Models\UserRole;
 use App\Models\ReportTask;
+use Auth;
 
 class AdminController extends Controller
 {
@@ -23,8 +24,9 @@ class AdminController extends Controller
         
     }
 
-    public function datauser() {
+    public function datauser(Request $request) {
         $data_user = User::all();
+        
         return view('admin.datauser', ['users' => $data_user]);
     }
 
@@ -47,12 +49,13 @@ class AdminController extends Controller
             "role_id" => $request->role
         ];
         UserRole::create($data_role);
-
+        $request->session()->flash('sukses', 'Data User Berhasil Ditambahkan');
         return redirect('/admin/datauser');
     }
 
-    public function edit($id) {
+    public function edit(Request $request, $id) {
         $data_user = User::find($id);
+        $request->session()->flash('editsukses', 'Data User Berhasil Diubah');
         return view('admin/edit', ['user' => $data_user]);
     }
 
@@ -68,6 +71,15 @@ class AdminController extends Controller
         return redirect('/admin/datauser');
     }
 
+    public function view($id)
+    {
+        $data_user = User::find($id);
+        $data_task = ReportTask::where('created_by', $data_user)->get();
+        
+        dd($data_task);
+        
+        //return view('admin.taskreport', ['report_task' => $data_task]);
+    }
 
     public function taskreport()
     {

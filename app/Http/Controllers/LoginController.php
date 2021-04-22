@@ -24,9 +24,13 @@ class LoginController extends Controller
                 return redirect('tim');
             } else 
             {
-                return 'Error';
+                $request->session()->flash('norole', 'Akun Anda Belum Mempunyai Role');
+                return redirect('/login');
             }
+            
         }
+        $request->session()->flash('noaccount', 'Akun Anda Belum Terdaftar');
+        return redirect('/login');
     }
 
     public function logout()

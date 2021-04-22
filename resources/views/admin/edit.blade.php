@@ -94,6 +94,11 @@ The above copyright notice and this permission notice shall be included in all c
       <!-- End Navbar -->
 
       <div class="content">
+      @if(session('sukses'))
+          <div class="alert alert-info" role="alert">
+          {{session('sukses')}}
+          </div>
+          @endif
       <div class="card card-primary">
               <div class="card-header">
                 <h3 class="card-title">Register a new user</h3>

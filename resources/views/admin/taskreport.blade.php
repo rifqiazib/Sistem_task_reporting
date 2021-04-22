@@ -120,11 +120,15 @@ The above copyright notice and this permission notice shall be included in all c
                           <button type="submit" class="btn btn-white btn-round btn-just-icon"><i class="material-icons"></i></button>
                           </div>
                     </div>
+                    
                   </div>
                 </div>
               </div>
               </br>
               </form>
+                        <div class="col-sm-2">
+                         <a href="{{ route('taskreport') }}"> <button class="btn btn-primary btn-sm">REFRESH</button></a>
+                        </div>
                 <div class="card-body table-responsive">
                   <table class="table table-hover">
                     <thead class="text-warning">
